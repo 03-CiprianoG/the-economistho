@@ -55,10 +55,10 @@ require("./routes.js")(app);
 // set static file when in production
 if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
-  app.use(express.static(path.join(__dirname, "build")));
+  app.use(express.static(path.join(__dirname, "./build")));
 
   app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    res.sendFile(path.join(__dirname, "./build/index.html"));
   });
 }
 
