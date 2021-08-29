@@ -26,13 +26,17 @@ The response’s data is loaded with the “Cheerio“ Library, then an algorith
 
 ### `<SERVER_URL>/fetch-html`
 
-By using the useEffect React hook, every time the page renders, the React App will trigger an axios api post request which point to an express route, with a payload which contains the current URL’s path.
+<p>By using the useEffect React hook, every time the page renders, the React App will trigger an axios api post request which point to an express route, with a payload which contains the current URL’s path.
 The express route on the server will then combine the base Url of the website and the path the user is currently on, and by fetching that result, the response’s data will be the index.html document rendered in that page, the data will be sent to the client and injected in the Html document rendered by React.
-In this way the index.html of our React App will ever be the same as the html document of whatever website we are pointing to in the express route fetch request.<p>
+In this way the index.html of our React App will ever be the same as the html document of whatever website we are pointing to in the express route fetch request.</p>
 
-# If you want to run this app locally
+# Make it up and running
 
-Make sure to set and run your MongoDB server.
+### `cd client && npm init && cd .. && cd server && npm init && cd ..`
+
+<p>This will install the dependencies needed and set the node_modules folder in both the client and the server folder</p>
+
+<p>Make sure to set and run your MongoDB server.<p>
 
 # Getting Started with Create React App
 
