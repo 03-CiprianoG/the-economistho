@@ -64,5 +64,5 @@ if (process.env.NODE_ENV === "production") {
 
 //telling express which port to listen to
 app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
+  console.log(`the app is listening on port ${PORT}`);
 });
