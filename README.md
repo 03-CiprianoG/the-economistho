@@ -30,6 +30,10 @@ By using the useEffect React hook, every time the page renders, the React App wi
 The express route on the server will then combine the base Url of the website and the path the user is currently on, and by fetching that result, the response’s data will be the index.html document rendered in that page, the data will be sent to the client and injected in the Html document rendered by React.
 In this way the index.html of our React App will ever be the same as the html document of whatever website we are pointing to in the express route fetch request.<p>
 
+# If you want to run this app locally
+
+Make sure to set and run your MongoDB server.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
