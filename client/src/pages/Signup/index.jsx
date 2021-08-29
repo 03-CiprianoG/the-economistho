@@ -20,12 +20,10 @@ const SignupPage = () => {
     })
 
       .then((response) => {
-        if (response.data.code === 200) {
-          setResponseMsg(response.data.message);
-          setTimeout(() => {
-            history.push("/user-login");
-          }, 3000);
-        }
+        setResponseMsg(response.data.message);
+        setTimeout(() => {
+          history.push("/user-login");
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);
