@@ -1,7 +1,7 @@
 // npm modules
-const Axios = require("axios");
 const cookieParser = require("express");
 const bodyParser = require("express");
+const path = require("path");
 const session = require("express-session");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
