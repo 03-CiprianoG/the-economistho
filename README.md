@@ -36,7 +36,7 @@ In this way the index.html of our React App will ever be the same as the html do
 
 <p>This will install the dependencies needed and set the node_modules folder in both the client and the server folder</p>
 
-<p>Make sure to set and run your MongoDB server.<p>
+<p>Make sure to connect to your MongoDB server and have it running.<p>
 
 # Getting Started with Create React App
 
