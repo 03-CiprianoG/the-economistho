@@ -4,9 +4,11 @@
   "description": "assignment project from Mistho.io",
   "main": "app.js",
   "scripts": {
-    "start": "node ./app.js",
-    "devStart": "nodemon ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "rebuild": "rm -r build && cd .. && cd client && npm run build && mv build ../server",
+    "rebuildAndCommit": "npm run rebuild && npm run commitToHeroku",
+    "commitToHeroku": "git add . && git commit -am \"automatic deploy\" && git push -f heroku master",
+    "devStart": "nodemon app.js"
   },
   "author": "Giuseppe Cipriano",
   "license": "ISC",
