@@ -18,8 +18,8 @@ By using mongoose, passport and express-session the user is able to signup, logi
 
 ### `<SERVER_URL>/fetch-and-scrape`
 
-Through an endpoint it is possible to gather information and data about the page the fetch call is pointing to, (e.g Images, Texts, Links… ).
-The response’s data is loaded with the “Cheerio“ Library, then some configuration will map through the Cheerio’s Object and pull out the sorted data.
+Through an endpoint it is possible to gather information and data about the page the fetch call is pointing to, (e.g Images, Textes, Links… ).
+The response’s data is loaded with the “Cheerio“ Library, then an algorithm will map through the Cheerio’s Object and pull out the sorted data. </br>
 <b>The Application does not actually needs the scraped data but it was required for the assignment</b> (assignment rule).
 
 ## Cloning system
