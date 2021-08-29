@@ -16,7 +16,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bcrypt-nodejs": "^0.0.3",
-    "cheerio": "*",
+    "cheerio": "^1.0.0-rc.10",
     "connect-mongo": "^4.5.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
