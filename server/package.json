@@ -7,7 +7,7 @@
     "start": "node app.js",
     "rebuild": "rm -r build && cd .. && cd client && npm run build && mv build ../server",
     "rebuildAndCommit": "npm run rebuild && npm run commitToHeroku",
-    "commitToHeroku": "cd .. && cd server && git add . && git commit -am \"automatic deploy\" && cd server && git subtree push --prefix server heroku master",
+    "commitToHeroku": "cd .. && cd server && git add . && git commit -am \"automatic deploy\" && cd .. && git subtree push --prefix server heroku master",
     "devStart": "nodemon app.js"
   },
   "author": "Giuseppe Cipriano",
