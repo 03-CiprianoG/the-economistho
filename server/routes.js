@@ -1,6 +1,5 @@
 const passport = require("passport");
 const Axios = require("axios");
-const jsdom = require("jsdom");
 const cheerio = require("cheerio");
 
 require("./config/passport")(passport);
