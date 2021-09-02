@@ -17,7 +17,9 @@ const FullArticle = (props) => {
         alignItems: "center",
       }}
     >
-      <AdContainer adImg={misthoLogo} />
+      {document.documentElement.clientWidth > 480 && (
+        <AdContainer adImg={misthoLogo} />
+      )}
       <Navbar userEmail={props.userEmail} />
       <div
         style={{
