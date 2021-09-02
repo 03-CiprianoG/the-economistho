@@ -13,6 +13,7 @@ const InputField = (props) => {
         width: "100%",
         fontSize: "16px",
         maxWidth: "600px",
+        marginBottom: "25px",
       }}
       value={props.value}
       onChange={props.handleChange}
