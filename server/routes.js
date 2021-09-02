@@ -45,26 +45,10 @@ module.exports = function (app) {
 
   // Web scraping system :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  // Fetching the index.html document dinamically based on the user's current path
-  // and sending back to the client
-
-  app.post("/fetch-html", async (req, res) => {
-    const baseUri = "https://www.economist.com";
-    path = req.body.pathname;
-    if (path === "/user-login" || path === "/user-signup") {
-      res.send({ code: 200, message: "Not fetching the html" });
-    } else {
-      Axios.post(baseUri + path)
-        .then((response) => {
-          res.send({ code: 200, html: response.data });
-        })
-        .catch((error) => console.log(error));
-    }
-  });
-
   // This route will gather data from the website and make them accessible through this endpoint
-  // in order to build a sort of Web-Scraping Api Infrastracture for an eventual implementation
-  // However in this case these data are not going to be needed.
+  // if path is the homepage of the website I will pull out the data I need from a script tag which has the articles' list in it
+  // otherwise the user should've clicked on one of the article, in order to provide the full article I need to scrape the data
+  // tag by tag
 
   app.post("/fetch-and-scrape", async (req, res) => {
     const baseUri = "https://www.economist.com";
@@ -74,35 +58,42 @@ module.exports = function (app) {
     const response = await Axios.post(baseUri + path);
     const $ = cheerio.load(response.data);
 
-    //mapping through all the div tags and then pushing to the array the info we need
+    if (path === "/") {
+      const obj = $("script[type='application/ld+json']");
+      const scrapedItemList = JSON.parse(obj[0].firstChild.data);
 
-    $("div")
-      .toArray()
-      .map((x, i) => {
-        articles.push({
-          n: i,
-          title: $(x).find("h3").text(),
-          description: $(x).find("p").text(),
-          image: $(x).find("img").attr("src"),
-        });
+      const items = scrapedItemList.itemListElement;
+
+      //sending the articles back to the client
+      res.send({ code: 200, articles: items });
+    } else {
+      //mapping through all the div tags and then pushing to the array the info we need
+
+      articles.push({
+        headline: $(".article__headline").text(),
+        subheadline: $(".article__subheadline").text(),
+        description: $(".article__description").text(),
+        image: $(".article__lead-image").find("img").attr("src"),
+        time: $(".article__dateline-datetime").text(),
+        text: $(".article__body-text").text(),
       });
 
-    //sanitizing the articles array
+      //sanitizing the articles array
 
-    //removing duplicate
-    let titles = articles.map((x) => x.title);
-    const firstFiltered = articles.filter(
-      ({ title }, i) => !titles.includes(title, i + 1)
-    );
-
-    //removing empty
-    const sanitizedArticlesArray = firstFiltered.filter((x) => {
-      return (
-        x.n !== "" && x.title !== "" && x.description !== "" && x.image !== ""
+      //removing duplicate
+      let titles = articles.map((x) => x.title);
+      const firstFiltered = articles.filter(
+        ({ title }, i) => !titles.includes(title, i + 1)
       );
-    });
 
-    //sending the articles back to the client
-    res.send({ code: 200, articles: sanitizedArticlesArray });
+      //removing empty
+      const sanitizedArticlesArray = firstFiltered.filter((x) => {
+        return (
+          x.n !== "" && x.title !== "" && x.description !== "" && x.image !== ""
+        );
+      });
+
+      res.send({ code: 200, articles: sanitizedArticlesArray });
+    }
   });
 };

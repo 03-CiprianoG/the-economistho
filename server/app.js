@@ -19,7 +19,11 @@ const PORT = process.env.PORT || 3001;
 const configDB = require("./config/database.js");
 
 //database connection
-mongoose.connect(configDB.url, configDB.options);
+mongoose.connect(configDB.url, configDB.options).catch((err) => {
+  console.log(err, "error connecting to the database");
+});
+
+//session configuration
 
 app.use(
   session({
@@ -35,8 +39,11 @@ app.use(
   })
 );
 
+//passport initialization and configs
 app.use(passport.initialize());
 app.use(passport.session());
+
+//cors configuration
 app.use(
   cors({
     origin: [`${process.env.CLIENT_URL}`],
@@ -49,6 +56,7 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser());
 app.use(express.json({ limit: "50mb" }));
+
 // routes
 require("./routes.js")(app);
 
@@ -63,6 +71,4 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //telling express which port to listen to
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
-});
+app.listen(PORT, () => {});
