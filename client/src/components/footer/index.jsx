@@ -13,7 +13,13 @@ const Footer = () => {
         justifyItems: "center",
       }}
     >
-      <p style={{ color: "#eee", fontSize: "18px", marginLeft: "25px" }}>
+      <p
+        style={
+          document.documentElement.clientWidth > 480
+            ? { color: "#eee", fontSize: "18px", marginLeft: "25px" }
+            : { color: "#eee", fontSize: "14px", marginLeft: "15px" }
+        }
+      >
         Built with passion by Giuseppe Cipriano, aspiring engineer at Mistho.io
       </p>
     </div>

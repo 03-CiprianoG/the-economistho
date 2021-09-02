@@ -19,11 +19,14 @@ function UserGate() {
           transform: "translate(-50%, -50%)",
           textAlign: "center",
           alignItems: "center",
-          gap: " 25px",
         }}
       >
-        <img src={desktopLogo} style={{ width: "220px" }} alt="" />
-        <h1 style={{ fontSize: "18px" }}>
+        <img
+          src={desktopLogo}
+          style={{ width: "220px", marginBottom: "25px" }}
+          alt=""
+        />
+        <h1 style={{ fontSize: "18px", marginBottom: "25px" }}>
           Please login to access all the articles
         </h1>
         <AnchorButton
@@ -35,6 +38,7 @@ function UserGate() {
             padding: "8px 15px 8px 15px",
             cursor: "pointer",
             width: "fit-content",
+            marginBottom: "25px",
           }}
         />
         <AnchorButton

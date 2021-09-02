@@ -72,7 +72,6 @@ const FormContainer = (props) => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        gap: "25px",
       }}
     >
       <h1
@@ -81,6 +80,7 @@ const FormContainer = (props) => {
           color: "#fff",
           padding: "15px 40px 15px 40px",
           backgroundColor: "#333",
+          marginBottom: "25px",
         }}
       >
         {props.formType === "login" ? "Login" : "Signup"}
@@ -90,12 +90,14 @@ const FormContainer = (props) => {
         handleChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
         type="email"
+        style={{ marginBottom: "25px" }}
       />
       <InputField
         value={password}
         handleChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
         type="password"
+        style={{ marginBottom: "25px" }}
       />
       <Button
         style={{
@@ -103,6 +105,7 @@ const FormContainer = (props) => {
           backgroundColor: "red",
           padding: "10px 25px 10px 25px",
           cursor: "pointer",
+          marginBottom: "25px",
         }}
         handleClick={
           props.formType === "login"
@@ -111,7 +114,7 @@ const FormContainer = (props) => {
         }
         label="Submit"
       />
-      <p style={{ color: "#000" }}>{responseMsg}</p>
+      <p style={{ color: "#000", marginBottom: "25px" }}>{responseMsg}</p>
 
       <AnchorButton
         style={{ fontSize: "14px" }}

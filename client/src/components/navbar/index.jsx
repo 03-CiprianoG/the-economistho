@@ -79,15 +79,14 @@ const Navbar = (props) => {
             flexDirection: "row",
             justifyContent: "center",
             margin: "auto 0px auto auto",
-            gap: "25px",
             alignItems: "center",
           }}
         >
           <h3
             style={
               document.documentElement.clientWidth > 480
-                ? { fontSize: "18px" }
-                : { fontSize: "14px" }
+                ? { marginRight: "25px", fontSize: "18px" }
+                : { marginRight: "25px", fontSize: "14px" }
             }
           >
             {props.userEmail}
